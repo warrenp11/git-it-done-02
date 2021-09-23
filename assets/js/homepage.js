@@ -1,8 +1,12 @@
 var getUserRepos = function() {
-    console.log("function was called");
+    console.log("function was called"); // to make sure function worked
 
     // fetch
-    fetch("https://api.github.com/users/octocat/repos");
+    var response = fetch("https://api.github.com/users/octocat/repos").then(function(response) {
+        response.json().then(function(data) {
+            console.log(data);
+        });
+    });
 };
 
 getUserRepos();

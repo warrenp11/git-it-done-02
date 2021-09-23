@@ -1,3 +1,20 @@
+var userFormEl = document.querySelector("#user-form");
+var nameInputEl = document.querySelector("#username");
+
+var formSubmitHandler = function(event) {
+    event.preventDefault();
+    
+    // get value from input element
+    var username = nameInputEl.value.trim();
+
+    if (username) {
+        getUserRepos(username);
+        nameInputEl.value = "";
+    } else {
+        alert("Please enter a GitHub username");
+    }
+}
+
 var getUserRepos = function(user) {
 
     // format the github api url
@@ -11,4 +28,4 @@ var getUserRepos = function(user) {
     });
 };
 
-getUserRepos("warrenp11");
+userFormEl.addEventListener("submit", formSubmitHandler);
